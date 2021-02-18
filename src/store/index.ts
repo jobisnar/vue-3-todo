@@ -17,7 +17,7 @@ export const key: InjectionKey<Store<Todos>> = Symbol();
 
 export const store = createStore<Todos>({
   state: {
-    todos: [{title: 'Store todo', completed: false}]
+    todos: [{title: 'Eat dinner at 7PM', completed: false}]
   },
 
   // Mutations are functions that affect the state.

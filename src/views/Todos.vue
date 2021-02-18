@@ -1,19 +1,16 @@
 <template>
     <h1>Your todo list!</h1>
-    <h3>{{user.name}} | {{user.email}}</h3>
     <div class="todos">
         <div class="todo" v-for="(todo, index) in filteredTodos" :key="index">
             <input type="checkbox" v-model="todo.completed">
-            Name: {{todo.title}}
+            <div class="todotext">{{todo.title}}</div>
         </div>
     </div>
     <div class="todoForm">
         
-        Input: {{titleField}}
-        
         <form @submit.prevent="onSubmit">
             <!-- :class="{'exceeded': bla}" adds the class when the expreession is true -->
-            <label for="input" :class="{'exceeded' : titleField.length > 20}">Todo ({{titleField.length}})</label>
+            <label for="input" class="label" :class="{'exceeded' : titleField.length > 20}">Todo ({{titleField.length}})</label>
             <input id="input" v-model="titleField">
             <button class="btn btn-outline-success" type="submit" value="Submit">Submit</button>
         </form>
@@ -116,6 +113,10 @@
 }
 
 .todo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     border-width: 1px;
     border-radius: 10px;
     border-style: solid;
@@ -124,9 +125,13 @@
     color: white;
     font-size: 20px;
     margin: 10px;
-    padding: 20px;
-    width: 60%;
+    padding: 10px;
+    width: 30%;
     transition: ease-in-out 0.3s;
+    
+    .todotext {
+        padding: 5px;
+    }
 
     &:hover {
         transform: scale(1.1);
@@ -134,7 +139,7 @@
 }
 
 .btn {
-    margin: 10px;
+    margin: 0px;
     padding: 5px;
 
 }
@@ -145,6 +150,14 @@
     border-color: rgb(155, 155, 155);
     border-radius: 5px;
     padding: 5px;
+    margin: 10px;
+    width: 300px;
+}
+
+.label {
+    font-family: Tahoma;
+    color: rgb(58, 58, 58);
+    font-size: 20px;
 }
 
 </style>
