@@ -3,7 +3,8 @@
     <h3>{{user.name}} | {{user.email}}</h3>
     <div class="todos">
         <div class="todo" v-for="(todo, index) in filteredTodos" :key="index">
-            Name: {{todo.title}}, completed: {{todo.completed}}
+            <input type="checkbox" v-model="todo.completed">
+            Name: {{todo.title}}
         </div>
     </div>
     <div class="todoForm">
@@ -14,9 +15,9 @@
             <!-- :class="{'exceeded': bla}" adds the class when the expreession is true -->
             <label for="input" :class="{'exceeded' : titleField.length > 20}">Todo ({{titleField.length}})</label>
             <input id="input" v-model="titleField">
-            <button type="submit" value="Submit">Submit</button>
+            <button class="btn btn-outline-success" type="submit" value="Submit">Submit</button>
         </form>
-        <button @click="deleteInput">Delete</button>
+        <button class="btn btn-outline-dark" @click="deleteInput">Delete</button>
     </div>
 </template>
 
@@ -46,7 +47,7 @@
 
             const user = reactive({
                 name: 'Jasper',
-                email: 'jasper@icannhas.com'
+                email: 'test@icannhas.com'
             });
 
             const invalidInput = ref(false);
@@ -130,6 +131,20 @@
     &:hover {
         transform: scale(1.1);
     }
+}
+
+.btn {
+    margin: 10px;
+    padding: 5px;
+
+}
+
+#input {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(155, 155, 155);
+    border-radius: 5px;
+    padding: 5px;
 }
 
 </style>
